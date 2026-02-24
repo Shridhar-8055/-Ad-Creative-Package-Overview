@@ -27,9 +27,16 @@ const SHEET_ID     = 'YOUR_GOOGLE_SHEET_ID';       // ← Replace
 const MEETING_LINK = 'https://your-meeting-link';   // ← Replace
 const SHEET_TAB    = 'Registrations';
 
-// ── POST handler (form submissions) ──────────────────────────
-function doPost(e) {
+// ── GET handler (receives form data as URL parameters) ───────
+function doGet(e) {
   try {
+    // If no parameters, it's a health check
+    if (!e.parameter.email) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ status: 'ok' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     const first_name  = e.parameter.first_name;
     const email       = e.parameter.email;
     const phone       = e.parameter.phone;
@@ -62,13 +69,6 @@ function doPost(e) {
       .createTextOutput(JSON.stringify({ status: 'error', message: err.message }))
       .setMimeType(ContentService.MimeType.JSON);
   }
-}
-
-// ── GET handler (health check) ───────────────────────────────
-function doGet(e) {
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: 'ok' }))
-    .setMimeType(ContentService.MimeType.JSON);
 }
 
 // ── Confirmation Email Template ──────────────────────────────

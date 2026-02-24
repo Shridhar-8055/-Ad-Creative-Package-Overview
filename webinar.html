@@ -412,11 +412,8 @@
       btn.disabled = true;
       btn.style.opacity = '0.7';
 
-      fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: new URLSearchParams(data)
-      })
+      const url = SCRIPT_URL + '?' + new URLSearchParams(data).toString();
+      fetch(url, { mode: 'no-cors' })
       .then(() => {
         showFormToast("You're registered! Check your email for the meeting link.", true);
         form.reset();
