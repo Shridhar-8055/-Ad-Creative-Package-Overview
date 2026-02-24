@@ -353,23 +353,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Social Proof Toasts
-    const toasts = [
-      { text: '<strong>Rajesh</strong> from Mumbai just registered', time: 'Just now' },
-      { text: '<strong>Priya</strong> from Delhi just registered', time: '2 min ago' },
-      { text: '<strong>Amit</strong> from Bengaluru just registered', time: '5 min ago' }
-    ];
-    let toastIdx = 0;
-    function showToast() {
-      const toast = document.getElementById('socialToast');
-      const textEl = document.getElementById('toastText');
-      textEl.innerHTML = toasts[toastIdx].text;
-      toast.classList.add('show');
-      setTimeout(() => { toast.classList.remove('show'); }, 4000);
-      toastIdx = (toastIdx + 1) % toasts.length;
-    }
-    setTimeout(() => { showToast(); setInterval(showToast, 12000); }, 8000);
-
     // ── Registration Backend ──
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzEe6R_yC_76Fe0jlzsbi24HB_6z4oUVjIPpuEr1JECY5FEvJceqfI8LJc73WEMM5EY/exec';
 
@@ -415,7 +398,7 @@
       const url = SCRIPT_URL + '?' + new URLSearchParams(data).toString();
       fetch(url, { mode: 'no-cors' })
       .then(() => {
-        showFormToast("You're registered! Check your email for the meeting link.", true);
+        showFormToast(data.first_name + ", you have been registered successfully! Check your email for the meeting link.", true);
         form.reset();
       })
       .catch(() => {
