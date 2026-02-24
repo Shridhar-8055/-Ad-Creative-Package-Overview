@@ -93,7 +93,7 @@ function buildEmailHtml(firstName) {
 
   // Sign off
   h += "<p style='margin:24px 0 0;color:#aaa;'>See you on the training!<br>";
-  h += "<strong style='color:#fff;'>Shamiq Ahmed</strong><br>";
+  h += "<strong style='color:#fff;'>Shamique Hussain</strong><br>";
   h += "<span style='color:#888;font-size:13px;'>Founder, Quantum Algo</span></p>";
   h += "</td></tr>";
 
