@@ -99,7 +99,7 @@ function buildEmailHtml(firstName) {
 
   // Footer
   h += "<tr><td style='background:#0d0d0d;padding:24px 40px;text-align:center;border-top:1px solid #222;'>";
-  h += "<p style='margin:0 0 8px;color:#666;font-size:12px;'>2026 Inner Circle Academy - Quantum Algo</p>";
+  h += "<p style='margin:0 0 8px;color:#666;font-size:12px;'>2026 Quantum Algo - Quantum Algo</p>";
   h += "<p style='margin:0;color:#555;font-size:11px;'>You received this email because you registered for our free webinar.</p>";
   h += "</td></tr>";
 
