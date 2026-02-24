@@ -4,6 +4,15 @@ const SHEET_TAB = 'Registrations';
 
 function doGet(e) {
   try {
+    // Return live registration count
+    if (e.parameter.action == 'count') {
+      var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_TAB);
+      var count = Math.max(0, sheet.getLastRow() - 1);
+      return ContentService
+        .createTextOutput(JSON.stringify({ status: 'ok', count: count }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     if (!e.parameter.email) {
       return ContentService
         .createTextOutput(JSON.stringify({ status: 'ok' }))
