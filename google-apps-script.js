@@ -30,8 +30,10 @@ const SHEET_TAB    = 'Registrations';
 // ── POST handler (form submissions) ──────────────────────────
 function doPost(e) {
   try {
-    const data = JSON.parse(e.postData.contents);
-    const { first_name, email, phone, experience } = data;
+    const first_name  = e.parameter.first_name;
+    const email       = e.parameter.email;
+    const phone       = e.parameter.phone;
+    const experience  = e.parameter.experience;
 
     // 1. Append row to Google Sheet
     const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_TAB);

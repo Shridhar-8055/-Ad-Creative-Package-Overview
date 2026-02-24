@@ -415,8 +415,7 @@
       fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: new URLSearchParams(data)
       })
       .then(() => {
         showFormToast("You're registered! Check your email for the meeting link.", true);
